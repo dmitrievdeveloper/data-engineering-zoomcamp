@@ -64,7 +64,7 @@ Complete the Quiz shown below. It’s a set of 6 multiple-choice questions to te
 
 - 692.6 MB
 
-  ***My answer: terraform init, terraform apply -auto-approve, terraform destroy***
+  ***My answer: 128.3 MB***
 
 2) What is the rendered value of the variable `file` when the inputs `taxi` is set to `green`, `year` is set to `2020`, and `month` is set to `04` during execution?
 
