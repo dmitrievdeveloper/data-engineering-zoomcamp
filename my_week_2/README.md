@@ -34,7 +34,7 @@ So far in the course, we processed data for the year 2019 and 2020. Your task is
 
   
 
-![homework datasets](/homework.png)
+![homework.png](homework.png)
 
   
 
