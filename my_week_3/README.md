@@ -59,8 +59,8 @@ Question 1: What is count of records for the 2024 Yellow Taxi Data?
 
 _**My answer: 20,332,093**_
 
-```
--- Creating external table referring to gcs path
+```sql
+-- Creating external table referring to gcs path 
 CREATE OR REPLACE EXTERNAL TABLE `taxi-rides-ny-526431.zoomcamp.external_yellow_tripdata`
 OPTIONS (
   format = 'PARQUET',
@@ -93,7 +93,7 @@ What is the **estimated amount** of data that will be read when this query is ex
 - 0 MB for the External Table and 0MB for the Materialized Table
 
 _**My answer: 0 MB for the External Table and 155.12 MB for the Materialized Table**_  
-```
+```sql
 -- Distinct PULocationIDs External
 SELECT COUNT(DISTINCT(PULocationID))
 FROM taxi-rides-ny-526431.zoomcamp.external_yellow_tripdata;
@@ -117,7 +117,7 @@ doubling the estimated bytes processed.
 - When selecting multiple columns, BigQuery performs an implicit join operation between them, increasing the estimated bytes processed
 
  _**My answer: BigQuery is a columnar database, and it only scans the specific columns requested in the query. Querying two columns (PULocationID, DOLocationID) requires reading more data than querying one column (PULocationID), leading to a higher estimated number of bytes processed.**_ 
-```
+```sql
 -- PULocationIDs Materialized
 SELECT PULocationID
 FROM taxi-rides-ny-526431.zoomcamp.e_yellow_tripdata_regular;
@@ -139,7 +139,7 @@ How many records have a fare_amount of 0?
 - ***8,333***
 
 _**My answer: 8,333**_  
-```
+```sql
 -- Count fare_amount = 0
 SELECT Count(1)
 FROM taxi-rides-ny-526431.zoomcamp.e_yellow_tripdata_regular
@@ -158,7 +158,7 @@ What is the best strategy to make an optimized table in Big Query if your query 
 - Partition by tpep_dropoff_datetime and Partition by VendorID
 
 _**My answer: Partition by tpep_dropoff_datetime and Cluster on VendorID**_  
-```
+```sql
 -- Creating a partition and cluster table
 CREATE OR REPLACE TABLE taxi-rides-ny-526431.zoomcamp.pc_yellow_tripdata_regular
 PARTITION BY DATE(tpep_dropoff_datetime)
@@ -191,7 +191,7 @@ Choose the answer which most closely matches.</br>
 - 310.31 MB for non-partitioned table and 285.64 MB for the partitioned table
 
 _**My answer: 310.24 MB for non-partitioned table and 26.84 MB for the partitioned table**_ 
- ```
+ ```sql
 -- Distinct VendorIDs Materialized
 SELECT DISTINCT(VendorID)
 FROM taxi-rides-ny-526431.zoomcamp.e_yellow_tripdata_regular
